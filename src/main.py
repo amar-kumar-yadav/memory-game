@@ -1,5 +1,3 @@
-# File: /memory-game/memory-game/src/main.py
-
 import pygame
 import sys
 from game import Game
@@ -8,7 +6,7 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((800, 600))
     symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']  # Example symbols
-    game = Game(symbols)
+    game = Game(screen, symbols)  # Pass screen to Game
     game.initialize_board()
     
     while True:
@@ -19,7 +17,7 @@ def main():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 game.handle_click(event.pos)
         
-        game.draw(screen)
+        game.draw()  # draw() no longer needs screen as argument
         pygame.display.flip()
 
 if __name__ == "__main__":
